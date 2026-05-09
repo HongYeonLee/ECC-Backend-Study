@@ -8,7 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    //멤버 서비스에서 사용하는 리포지토리와 테스트에서 사용하는 리포지토리가 다른 객체이므로 발생하는 문제를 방지하기 위해 생성자를 이용
+    // DI - Dependency Injection로 외부에서 넣어주는 거, 멤버 서비스 입장에선 외부에서 리포지토리를 넣어줌
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     // 회원가입
     public Long join(Member member) {
