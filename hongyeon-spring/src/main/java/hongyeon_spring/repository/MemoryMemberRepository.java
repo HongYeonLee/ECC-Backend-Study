@@ -33,4 +33,8 @@ public class MemoryMemberRepository implements MemberRepository {
         //맵을 리스트로 변환해서 리턴
         return new ArrayList<>(store.values());
     }
+
+    public void clearStore() {
+        store.clear();
+    }
 }
